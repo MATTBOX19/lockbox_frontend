@@ -1,0 +1,124 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, #03101e, #000);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 80px;
+}
+
+.header {
+  margin-top: 40px;
+}
+
+.logo {
+  color: #00ffcc;
+  font-size: 3rem;
+  text-shadow: 0 0 25px #00ffcc, 0 0 40px #0088ff;
+  animation: pulse 3s infinite;
+}
+
+.subtitle {
+  color: #ffb300;
+  margin-top: 4px;
+}
+
+.record {
+  margin: 16px;
+  background: rgba(0, 255, 150, 0.1);
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  padding: 10px 20px;
+  box-shadow: 0 0 15px #00ffcc44;
+  display: inline-block;
+}
+
+.nav {
+  margin: 20px;
+}
+
+button {
+  margin: 0 8px;
+  padding: 10px 20px;
+  border: 1px solid #00ffcc;
+  background: transparent;
+  color: #00ffcc;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #00ffcc33;
+}
+
+button:hover {
+  background: #00ffcc22;
+}
+
+button.active {
+  background: #00ffcc33;
+  color: #fff;
+  box-shadow: 0 0 20px #00ffccaa;
+}
+
+.card, .leader {
+  border: 1px solid #00ffcc55;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px;
+  max-width: 600px;
+  width: 90%;
+  text-align: left;
+  background: rgba(0, 20, 30, 0.8);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover, .leader:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #00ffcc55;
+}
+
+.card.alt {
+  border-color: #ff0080;
+  box-shadow: 0 0 12px #ff008088;
+}
+
+.leaderboard {
+  margin-top: 30px;
+}
+
+.leader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #00ffcc;
+}
+
+.rank {
+  font-weight: bold;
+  color: #ffb300;
+}
+
+.acc {
+  color: #00ffcc;
+  font-weight: bold;
+}
+
+.loading {
+  margin-top: 80px;
+  font-size: 1.2rem;
+  color: #00ffcc;
+}
+
+@keyframes pulse {
+  0% { text-shadow: 0 0 10px #00ffcc; }
+  50% { text-shadow: 0 0 25px #00ffcc; }
+  100% { text-shadow: 0 0 10px #00ffcc; }
+}
