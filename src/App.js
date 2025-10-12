@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./theme.css";
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
 
 function App() {
   const [picks, setPicks] = useState([]);
