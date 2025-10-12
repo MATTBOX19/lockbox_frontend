@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./theme.css";
 
-const API_BASE = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+const API_BASE =
+  (process.env.REACT_APP_API_BASE_URL && process.env.REACT_APP_API_BASE_URL.trim()) ||
+  "https://lockbox-backend-qkx9.onrender.com";
+
+console.log("🔍 Using API base:", API_BASE);
+
+
 
 
 function App() {
