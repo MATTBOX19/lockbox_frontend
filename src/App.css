@@ -1,77 +1,25 @@
 body {
   background-color: #0b0b0b;
-  color: #eaffea;
-  font-family: "Inter", sans-serif;
+  color: #00ffcc;
+  font-family: "Poppins", sans-serif;
   text-align: center;
-  margin: 0;
-}
-
-h1 {
-  color: #00ffa2;
-  margin-top: 1.5rem;
-  font-size: 2.5rem;
-}
-
-.subtitle {
-  color: #8affcb;
-  margin: -0.5rem 0 1rem;
-}
-
-.record {
-  color: #ffb347;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
-
-.featured {
-  background: rgba(0, 255, 145, 0.08);
-  border-radius: 14px;
-  padding: 1.5rem;
-  width: 90%;
-  max-width: 750px;
-  margin: 0 auto 2rem;
-}
-
-h2 {
-  color: #66ffc2;
-  margin-bottom: 1rem;
-}
-
-.locks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.lock-card {
-  background: #121212;
-  border: 1px solid #00ffa2;
-  border-radius: 10px;
-  padding: 1rem;
-  width: 210px;
-}
-
-.games {
-  margin-top: 2rem;
-}
-
-.game-card {
-  background: #151515;
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem auto;
-  width: 90%;
-  max-width: 650px;
-  border: 1px solid #333;
 }
 
 .error {
-  color: #ff5e5e;
+  color: red;
 }
 
-.updated {
-  margin-top: 2rem;
-  font-size: 0.85rem;
-  color: #999;
+.lock-card,
+.pick-card {
+  background: #121212;
+  border-radius: 12px;
+  margin: 10px auto;
+  padding: 12px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 0 6px #0ff3;
+}
+
+.lock-card h3 {
+  margin-bottom: 8px;
 }
