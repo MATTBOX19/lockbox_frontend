@@ -1,58 +1,57 @@
-.App {
+body {
+  margin: 0;
+  background-color: #0a0a0a;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+.app-container {
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
   text-align: center;
-  color: #cce7e8;
-  font-family: "Poppins", sans-serif;
-  background: #0b1016;
-  min-height: 100vh;
-  padding: 1rem;
+}
+
+.header h1 {
+  color: #00ff9c;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
 }
 
 .record {
-  color: #ff734d;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  color: #aaa;
+  font-size: 1rem;
 }
 
-.featured {
-  background: #101820;
-  border-radius: 16px;
-  padding: 1rem;
-  margin: 1rem auto;
-  width: 90%;
-  max-width: 900px;
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
-}
-
-.locks {
+.picks-container {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
 }
 
-.lock-card {
-  background: #151c25;
-  border-radius: 10px;
-  padding: 1rem;
-  width: 250px;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+.pick-card {
+  border: 2px solid #222;
+  border-radius: 16px;
+  padding: 20px;
+  background-color: #141414;
+  box-shadow: 0 0 15px rgba(0, 255, 156, 0.1);
 }
 
-.games {
-  margin-top: 2rem;
+.pick-card h2 {
+  margin-top: 0;
 }
 
-.game-card {
-  background: #151c25;
-  border-radius: 12px;
-  margin: 10px auto;
-  padding: 1rem;
-  width: 90%;
-  max-width: 700px;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.1);
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #0a0a0a;
 }
 
 footer {
-  margin-top: 2rem;
-  opacity: 0.8;
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: #666;
 }

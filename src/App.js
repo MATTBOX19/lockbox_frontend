@@ -2,92 +2,107 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [record, setRecord] = useState(null);
-  const [locks, setLocks] = useState(null);
-  const [picks, setPicks] = useState([]);
+  const API_BASE = process.env.REACT_APP_API_BASE || "https://lockbox-backend.onrender.com";
+  const [featured, setFeatured] = useState(null);
+  const [record, setRecord] = useState({ wins: 0, losses: 0, winRate: 0 });
   const [loading, setLoading] = useState(true);
 
-  const backend = "https://lockbox-backend-qkx9.onrender.com";
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const [featRes, recordRes] = await Promise.all([
+        fetch(`${API_BASE}/api/featured`),
+        fetch(`${API_BASE}/api/record`),
+      ]);
+      const featData = await featRes.json();
+      const recData = await recordRes.json();
+      setFeatured(featData);
+      setRecord(recData);
+    } catch (err) {
+      console.error("❌ Fetch error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const [recordRes, featuredRes, picksRes] = await Promise.all([
-          fetch(`${backend}/api/record`).then((r) => r.json()),
-          fetch(`${backend}/api/featured`).then((r) => r.json()),
-          fetch(`${backend}/api/picks`).then((r) => r.json())
-        ]);
-
-        setRecord(recordRes);
-        setLocks(featuredRes);
-        setPicks(picksRes.picks || []);
-      } catch (err) {
-        console.error("Error loading data:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
     fetchData();
+    const interval = setInterval(fetchData, 60000);
+    return () => clearInterval(interval);
   }, []);
 
-  if (loading) return <div className="loading">Loading LockBox AI...</div>;
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <h2>🔒 LockBox AI Loading Picks...</h2>
+      </div>
+    );
+  }
 
   return (
-    <div className="App">
-      <h1>💎 LOCKBOX AI</h1>
-      <p className="tagline">Win Smarter. Not Harder.</p>
+    <div className="app-container">
+      <header className="header">
+        <h1>🏈 LockBox AI Picks</h1>
+        <p className="record">
+          Record: {record.wins}-{record.losses} | Accuracy:{" "}
+          <strong>{record.winRate}%</strong>
+        </p>
+      </header>
 
-      <div className="record">
-        🔥 Record: {record?.wins || 0}-{record?.losses || 0} ({record?.winRate || 0}%)
-      </div>
-
-      <section className="featured">
-        <h2>🏆 LockBox Picks of the Day</h2>
-
-        <div className="locks">
-          <div className="lock-card">
-            <h3>💰 Moneyline Lock</h3>
-            <p>{locks?.moneylineLock?.pick || "No pick"}</p>
-            <small>Confidence: {locks?.moneylineLock?.confidence || 0}%</small>
-          </div>
-
-          <div className="lock-card">
-            <h3>📏 Spread Lock</h3>
-            <p>{locks?.spreadLock?.pick || "No pick"}</p>
-            <small>Confidence: {locks?.spreadLock?.confidence || 0}%</small>
-          </div>
-
-          <div className="lock-card">
-            <h3>🎯 Prop Lock</h3>
-            <p>{locks?.propLock?.player || "No props available"}</p>
-            <small>Confidence: {locks?.propLock?.confidence || 0}%</small>
-          </div>
+      {!featured ? (
+        <div className="no-data">No data available yet</div>
+      ) : (
+        <div className="picks-container">
+          <PickCard
+            title="💰 Moneyline Lock"
+            pick={featured.moneylineLock}
+            color="#00FF9C"
+          />
+          <PickCard
+            title="🧱 Spread Lock"
+            pick={featured.spreadLock}
+            color="#39B5FF"
+          />
+          <PickCard
+            title="🎯 Prop Lock"
+            pick={featured.propLock}
+            color="#FFA84D"
+          />
         </div>
-      </section>
-
-      <section className="games">
-        <h2>🤖 All AI Game Picks</h2>
-
-        {picks.length > 0 ? (
-          picks.map((g, i) => (
-            <div key={i} className="game-card">
-              <h3>{g.matchup}</h3>
-              <p><strong>Book:</strong> {g.bookmaker}</p>
-              <p>AI Moneyline: {g.mlPick?.pick} ({g.mlPick?.confidence}%)</p>
-              <p>AI Spread: {g.spreadPick?.pick} ({g.spreadPick?.confidence}%)</p>
-            </div>
-          ))
-        ) : (
-          <p>No game picks available right now.</p>
-        )}
-      </section>
+      )}
 
       <footer>
-        <button className="logout">🔒 Logout</button>
-        <p className="powered">
-          Powered by <b>LockBox AI</b> — Live Odds & Results
+        <p>
+          Updated:{" "}
+          {featured?.generatedAt
+            ? new Date(featured.generatedAt).toLocaleString()
+            : "n/a"}
         </p>
       </footer>
+    </div>
+  );
+}
+
+function PickCard({ title, pick, color }) {
+  if (!pick) return null;
+  return (
+    <div className="pick-card" style={{ borderColor: color }}>
+      <h2 style={{ color }}>{title}</h2>
+      {pick.player ? (
+        <p>
+          <strong>{pick.player}</strong> ({pick.market})<br />
+          Odds: {pick.price} | Confidence: {pick.confidence}%
+        </p>
+      ) : (
+        <>
+          <p>
+            <strong>{pick.pick}</strong>
+          </p>
+          <p>Confidence: {pick.confidence}%</p>
+          {pick.homeML && <p>Home ML: {pick.homeML}</p>}
+          {pick.awayML && <p>Away ML: {pick.awayML}</p>}
+        </>
+      )}
     </div>
   );
 }
