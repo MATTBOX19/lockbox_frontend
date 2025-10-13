@@ -1,57 +1,63 @@
 body {
   margin: 0;
-  background-color: #0a0a0a;
-  color: #fff;
+  background-color: #0c0c0c;
+  color: #e0ffe0;
   font-family: "Inter", sans-serif;
-}
-
-.app-container {
-  padding: 20px;
-  max-width: 700px;
-  margin: 0 auto;
   text-align: center;
 }
 
-.header h1 {
-  color: #00ff9c;
-  font-size: 2rem;
-  margin-bottom: 0.3rem;
+h1 {
+  color: #00ff91;
+  margin-top: 1.5rem;
 }
 
-.record {
-  color: #aaa;
-  font-size: 1rem;
+h2 {
+  margin-top: 2rem;
+  color: #66ffb2;
 }
 
-.picks-container {
+.locks {
+  background: rgba(0, 255, 145, 0.1);
+  margin: 2rem auto;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 90%;
+  max-width: 700px;
+}
+
+.lock-cards {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-.pick-card {
-  border: 2px solid #222;
-  border-radius: 16px;
-  padding: 20px;
-  background-color: #141414;
-  box-shadow: 0 0 15px rgba(0, 255, 156, 0.1);
-}
-
-.pick-card h2 {
-  margin-top: 0;
-}
-
-.loading-screen {
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 100vh;
-  background: #0a0a0a;
+  gap: 1rem;
 }
 
-footer {
-  margin-top: 30px;
-  font-size: 0.85rem;
-  color: #666;
+.lock-card {
+  background: #121212;
+  border: 1px solid #00ff91;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 200px;
+  color: white;
+}
+
+.history {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.game-card {
+  background: #141414;
+  border-radius: 10px;
+  margin: 1rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 600px;
+  color: #f4f4f4;
+}
+
+.updated {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #888;
 }
