@@ -82,7 +82,7 @@ export default function App() {
               <h3>{p.matchup}</h3>
               <p><b>AI Pick:</b> {p.pick}</p>
               <p><b>Confidence:</b> {p.confidence}%</p>
-              <p><b>Odds:</b> {p.oddsText || `${p.awayML ?? ""} / ${p.homeML ?? ""}`}</p>
+              <p><b>Odds:</b> {p.oddsText || `${p.odds?.awayML ?? ""} / ${p.odds?.homeML ?? ""}`}</p>
               <p><b>Bookmaker:</b> {p.bookmaker || "N/A"}</p>
               <p><b>Model:</b> {p.aiModel}</p>
             </div>
