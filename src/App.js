@@ -15,6 +15,7 @@ function App() {
     try {
       setError(false);
       setLoading(true);
+
       const [featuredRes, recordRes] = await Promise.all([
         fetch(`${API_BASE}/api/featured`),
         fetch(`${API_BASE}/api/record`),
@@ -38,7 +39,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, 5 * 60 * 1000); // auto refresh every 5 mins
+    const interval = setInterval(fetchData, 5 * 60 * 1000); // auto-refresh every 5 mins
     return () => clearInterval(interval);
   }, []);
 
@@ -86,4 +87,31 @@ function App() {
 
           <div className="all-picks">
             <h2>🤖 All AI Game Picks</h2>
-            {featured.picks.map
+            {featured.picks && featured.picks.length > 0 ? (
+              featured.picks.map((p, i) => (
+                <div key={i} className="pick-card">
+                  <h3>{p.matchup}</h3>
+                  <p>Book: {p.bookmaker}</p>
+                  <p>
+                    <strong>AI Moneyline:</strong> {p.mlPick.pick} (
+                    {p.mlPick.confidence}%)
+                  </p>
+                  {p.spreadPick && (
+                    <p>
+                      <strong>AI Spread:</strong> {p.spreadPick.pick} (
+                      {p.spreadPick.confidence}%)
+                    </p>
+                  )}
+                </div>
+              ))
+            ) : (
+              <p>No game picks available yet.</p>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default App;
