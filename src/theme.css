@@ -1,124 +1,88 @@
 body {
-  font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(circle at top, #03101e, #000);
-  color: #fff;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top, #000, #111 70%);
+  color: white;
   text-align: center;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 80px;
 }
 
 .header {
-  margin-top: 40px;
+  padding: 25px;
 }
 
 .logo {
-  color: #00ffcc;
-  font-size: 3rem;
-  text-shadow: 0 0 25px #00ffcc, 0 0 40px #0088ff;
-  animation: pulse 3s infinite;
+  font-size: 2.5em;
+  color: #00e6b0;
 }
 
 .subtitle {
-  color: #ffb300;
-  margin-top: 4px;
+  font-weight: 400;
+  color: #aaa;
+  margin-bottom: 8px;
 }
 
 .record {
-  margin: 16px;
-  background: rgba(0, 255, 150, 0.1);
-  border: 1px solid #00ffcc;
-  border-radius: 8px;
-  padding: 10px 20px;
-  box-shadow: 0 0 15px #00ffcc44;
-  display: inline-block;
+  color: #0ff;
+  font-weight: bold;
 }
 
 .nav {
-  margin: 20px;
+  margin-top: 20px;
 }
 
 button {
-  margin: 0 8px;
-  padding: 10px 20px;
-  border: 1px solid #00ffcc;
-  background: transparent;
-  color: #00ffcc;
-  font-family: 'Orbitron', sans-serif;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s;
-  box-shadow: 0 0 10px #00ffcc33;
-}
-
-button:hover {
-  background: #00ffcc22;
-}
-
-button.active {
-  background: #00ffcc33;
+  margin: 5px;
+  background: none;
   color: #fff;
-  box-shadow: 0 0 20px #00ffccaa;
-}
-
-.card, .leader {
-  border: 1px solid #00ffcc55;
+  border: 1px solid #00e6b0;
+  padding: 10px 20px;
   border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.active, button:hover {
+  background: #00e6b0;
+  color: #000;
+}
+
+.card {
+  background: #1a1a1a;
+  margin: 20px auto;
   padding: 20px;
-  margin: 16px;
-  max-width: 600px;
-  width: 90%;
-  text-align: left;
-  background: rgba(0, 20, 30, 0.8);
-  transition: transform 0.3s, box-shadow 0.3s;
+  width: 80%;
+  border-radius: 16px;
+  box-shadow: 0 0 15px #00e6b033;
 }
 
-.card:hover, .leader:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 20px #00ffcc55;
+.glow {
+  box-shadow: 0 0 20px #00e6b033;
 }
 
-.card.alt {
-  border-color: #ff0080;
-  box-shadow: 0 0 12px #ff008088;
+.barContainer {
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 24px;
+  margin: 10px 0;
 }
 
-.leaderboard {
-  margin-top: 30px;
-}
-
-.leader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #00ffcc;
-}
-
-.rank {
+.bar {
+  height: 100%;
+  color: black;
   font-weight: bold;
-  color: #ffb300;
+  text-align: center;
+  line-height: 24px;
 }
 
-.acc {
-  color: #00ffcc;
+.edge {
+  color: #0ff;
   font-weight: bold;
 }
 
-.loading {
-  margin-top: 80px;
-  font-size: 1.2rem;
-  color: #00ffcc;
-}
-
-@keyframes pulse {
-  0% { text-shadow: 0 0 10px #00ffcc; }
-  50% { text-shadow: 0 0 25px #00ffcc; }
-  100% { text-shadow: 0 0 10px #00ffcc; }
+.modelTag {
+  color: #ffcc00;
+  font-weight: bold;
+  margin-top: 8px;
 }
