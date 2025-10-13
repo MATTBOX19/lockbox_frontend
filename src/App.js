@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, 60000); // refresh every 60s
+    const interval = setInterval(fetchData, 900000); // refresh every 15 min
     return () => clearInterval(interval);
   }, []);
 
