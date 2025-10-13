@@ -1,34 +1,149 @@
+/* === GLOBAL === */
+body {
+  background-color: #0b0c10;
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #0b0c10;
+  min-height: 100vh;
+}
+
+/* === HEADER === */
+.header {
+  background-color: #0b0c10;
+  padding-bottom: 10px;
+}
+
+.logo {
+  color: #45a29e;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #66fcf1;
+  margin-top: 0;
+}
+
+.record {
+  font-size: 18px;
+  color: #ff6b6b;
+  margin-top: 10px;
+}
+
+/* === CARD STYLE === */
 .card {
   background-color: #1f2833;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
   margin: 20px auto;
   max-width: 600px;
-  box-shadow: 0 0 10px #45a29e;
-  color: #ffffff; /* force light text */
+  box-shadow: 0 0 20px rgba(102, 252, 241, 0.2);
+  color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card p, .card span {
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(102, 252, 241, 0.35);
+}
+
+.card h3 {
+  color: #66fcf1;
+  margin-bottom: 10px;
+}
+
+.card p {
   color: #c5c6c7;
   font-size: 16px;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 
 .card b {
   color: #ffffff;
 }
 
-.loading {
-  font-size: 18px;
-  color: #66fcf1;
+/* === DATA COLORS === */
+.odds {
+  color: #00f3c3;
+  font-weight: 600;
 }
 
-.record {
-  font-size: 18px;
-  margin-top: 10px;
-  color: #ff6b6b;
+.score {
+  color: #9be9a8;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.status {
+  color: #66fcf1;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-left: 4px;
+}
+
+.no-score {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.highlight {
+  color: #ffcc66;
+  text-shadow: 0 0 6px #ffcc66;
 }
 
 .glow {
-  box-shadow: 0 0 20px #66fcf1;
+  box-shadow: 0 0 25px rgba(102, 252, 241, 0.3);
+}
+
+/* === LOADING / BUTTONS === */
+.loading {
+  font-size: 18px;
+  color: #66fcf1;
+  margin-top: 40px;
+}
+
+button,
+.logout-btn {
+  background-color: #45a29e;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+button:hover,
+.logout-btn:hover {
+  background-color: #66fcf1;
+  color: #0b0c10;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 32px;
+  }
+
+  .card {
+    margin: 15px 0;
+    padding: 16px;
+  }
+
+  .record {
+    font-size: 16px;
+  }
+
+  button {
+    width: 90%;
+  }
 }
