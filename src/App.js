@@ -55,59 +55,33 @@ export default function App() {
   }
 
   return (
-    <div className="app">
-      <div className="header" style={{ textAlign: "center", margin: "20px 0" }}>
-        <h1>💎 LOCKBOX AI</h1>
-        <h2 style={{ color: "#00f3c3" }}>Win Smarter. Not Harder.</h2>
-        <p style={{ fontSize: "1.1rem", color: "orange" }}>
-          🔥 Record: {record.wins}-{record.losses} ({record.winRate}%)
-        </p>
-      </div>
-
-      <div className="content" style={{ padding: "10px", display: "grid", gap: "20px" }}>
-        {picks.length === 0 ? (
-          <p style={{ textAlign: "center" }}>No active games right now.</p>
-        ) : (
-          picks.map((p, i) => (
-            <div
-              key={i}
-              className="card"
-              style={{
-                background: "#111",
-                borderRadius: "12px",
-                padding: "16px",
-                boxShadow: "0 0 10px #00f3c322",
-              }}
-            >
-              <h3>{p.matchup}</h3>
-              <p><b>AI Pick:</b> {p.pick}</p>
-              <p><b>Confidence:</b> {p.confidence}%</p>
-              <p><b>Odds:</b> {p.oddsText || `${p.odds?.awayML ?? ""} / ${p.odds?.homeML ?? ""}`}</p>
-              <p><b>Bookmaker:</b> {p.bookmaker || "N/A"}</p>
-              <p><b>Model:</b> {p.aiModel}</p>
-            </div>
-          ))
-        )}
-      </div>
-
-      <div style={{ textAlign: "center", marginTop: "40px" }}>
-        <button
-          onClick={() => {
-            localStorage.clear();
-            window.location.reload();
-          }}
-          style={{
-            background: "#00f3c3",
-            color: "#000",
-            border: "none",
-            padding: "10px 20px",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          🔒 Logout
-        </button>
-      </div>
+  <div className="app">
+    <div className="header">
+      <h1 className="logo">💎 LOCKBOX AI</h1>
+      <h2 className="subtitle">Win Smarter. Not Harder.</h2>
+      <div className="record">🔥 Record: {record.wins}-{record.losses} ({record.winRate}%)</div>
     </div>
-  );
-}
+
+    <div className="content">
+      {picks.length === 0 ? (
+        <p className="loading">Loading AI Picks...</p>
+      ) : (
+        picks.map((p, i) => (
+          <div key={i} className="card glow">
+            <h3>{p.matchup}</h3>
+            <p><b>AI Pick:</b> {p.pick}</p>
+            <p><b>Confidence:</b> {p.confidence}%</p>
+            <p style={{ color: "#00ffcc" }}>
+              <b>Odds:</b> {p.odds?.awayML ?? "?"} / {p.odds?.homeML ?? "?"}
+            </p>
+            {/* Optional: Show more odds info like spreads/totals if needed */}
+          </div>
+        ))
+      )}
+    </div>
+
+    <button onClick={() => { localStorage.clear(); window.location.reload(); }}>
+      🔒 Logout
+    </button>
+  </div>
+);
