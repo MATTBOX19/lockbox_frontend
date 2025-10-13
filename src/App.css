@@ -1,31 +1,43 @@
 body {
-  margin: 0;
-  background-color: #0c0c0c;
-  color: #e0ffe0;
+  background-color: #0b0b0b;
+  color: #eaffea;
   font-family: "Inter", sans-serif;
   text-align: center;
+  margin: 0;
 }
 
 h1 {
-  color: #00ff91;
+  color: #00ffa2;
   margin-top: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  color: #8affcb;
+  margin: -0.5rem 0 1rem;
+}
+
+.record {
+  color: #ffb347;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.featured {
+  background: rgba(0, 255, 145, 0.08);
+  border-radius: 14px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 750px;
+  margin: 0 auto 2rem;
 }
 
 h2 {
-  margin-top: 2rem;
-  color: #66ffb2;
+  color: #66ffc2;
+  margin-bottom: 1rem;
 }
 
 .locks {
-  background: rgba(0, 255, 145, 0.1);
-  margin: 2rem auto;
-  border-radius: 12px;
-  padding: 1rem;
-  width: 90%;
-  max-width: 700px;
-}
-
-.lock-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -34,30 +46,32 @@ h2 {
 
 .lock-card {
   background: #121212;
-  border: 1px solid #00ff91;
+  border: 1px solid #00ffa2;
   border-radius: 10px;
   padding: 1rem;
-  width: 200px;
-  color: white;
+  width: 210px;
 }
 
-.history {
+.games {
   margin-top: 2rem;
-  padding: 1rem;
 }
 
 .game-card {
-  background: #141414;
+  background: #151515;
   border-radius: 10px;
-  margin: 1rem auto;
   padding: 1rem;
+  margin: 1rem auto;
   width: 90%;
-  max-width: 600px;
-  color: #f4f4f4;
+  max-width: 650px;
+  border: 1px solid #333;
+}
+
+.error {
+  color: #ff5e5e;
 }
 
 .updated {
   margin-top: 2rem;
-  font-size: 0.9rem;
-  color: #888;
+  font-size: 0.85rem;
+  color: #999;
 }
