@@ -1,33 +1,117 @@
-.top-plays {
-  background: #111;
-  border-radius: 14px;
+/* LockBox AI Styling */
+
+body {
+  background-color: #0b0b0b;
+  color: #00ffcc;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: #00ffc6;
+}
+
+.App {
   padding: 20px;
-  margin: 25px auto;
-  width: 85%;
-  max-width: 600px;
-  box-shadow: 0 0 20px #00ffc620;
+  min-height: 100vh;
 }
 
-.top-plays h2 {
-  color: #00ffc6;
-  margin-bottom: 10px;
+header {
+  margin-bottom: 20px;
 }
 
-.top-card {
-  background: #1b1b1b;
-  border: 1px solid #00ffc620;
+.tabs {
+  margin: 20px 0;
+}
+
+.tabs button {
+  background: transparent;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
   border-radius: 10px;
-  margin: 10px auto;
-  padding: 12px;
-  color: #e0f7f4;
+  padding: 8px 20px;
+  margin: 0 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
-.top-card h3 {
+.tabs button.active {
+  background-color: #00ffcc;
+  color: #000;
+}
+
+.card, .score-card, .top-card {
+  background: #121212;
+  border-radius: 15px;
+  margin: 15px auto;
+  padding: 15px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 0 8px #00ffcc44;
+  text-align: left;
+}
+
+.top-card h3, .card h3 {
+  color: #fff;
+}
+
+.book, .time, .lines p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #c7c7c7;
+}
+
+.error {
+  color: #ff4c4c;
+  font-weight: bold;
+}
+
+.edge {
+  color: #00ffcc;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.subtext {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.glow {
+  border: 1px solid #00ffcc33;
+}
+
+.top-plays {
+  margin-bottom: 25px;
+}
+
+.top-card strong {
+  color: #ffd700;
+}
+
+.score-card {
+  text-align: center;
+}
+
+.score-card h3 {
   color: #00ffc6;
-  margin: 5px 0;
 }
 
-.top-card p {
-  font-size: 0.95em;
+.score-card p {
   color: #ccc;
+}
+
+@media (max-width: 600px) {
+  .card, .score-card, .top-card {
+    width: 95%;
+  }
+
+  .tabs button {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+  }
 }
