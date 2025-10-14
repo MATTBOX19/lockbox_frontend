@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [activeTab, setActiveTab] = useState("picks");
   const [featured, setFeatured] = useState(null);
   const [record, setRecord] = useState({ wins: 0, losses: 0, winRate: 0 });
+  const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -11,22 +13,19 @@ function App() {
     process.env.REACT_APP_API_BASE_URL ||
     "https://lockbox-backend-qkx9.onrender.com";
 
-  const fetchData = async () => {
+  // Fetch picks and record
+  const fetchMainData = async () => {
     try {
       setError(false);
       setLoading(true);
-
       const [featuredRes, recordRes] = await Promise.all([
         fetch(`${API_BASE}/api/featured`),
         fetch(`${API_BASE}/api/record`),
       ]);
-
       if (!featuredRes.ok || !recordRes.ok)
         throw new Error("Server connection failed");
-
       const featuredData = await featuredRes.json();
       const recordData = await recordRes.json();
-
       setFeatured(featuredData);
       setRecord(recordData);
     } catch (err) {
@@ -37,27 +36,65 @@ function App() {
     }
   };
 
+  // Fetch live scores
+  const fetchScores = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/api/scores`);
+      const data = await res.json();
+      const games = data.games || [];
+
+      // Sort LIVE first, then finals
+      const sorted = [
+        ...games.filter((g) => !g.completed),
+        ...games.filter((g) => g.completed),
+      ];
+      setScores(sorted);
+    } catch (err) {
+      console.error("❌ /api/scores error:", err.message);
+      setScores([]);
+    }
+  };
+
+  // Run once on load
   useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 5 * 60 * 1000); // auto-refresh every 5 mins
+    fetchMainData();
+    fetchScores();
+    const interval = setInterval(fetchScores, 60000); // auto-refresh every 1 min
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <div className="App">
-      <h1>💎 LOCKBOX AI</h1>
-      <p>Win Smarter. Not Harder.</p>
+  // ======================
+  // 🧭 TAB NAVIGATION
+  // ======================
+  const renderTabs = () => (
+    <div className="tabs">
+      <button
+        className={activeTab === "picks" ? "active" : ""}
+        onClick={() => setActiveTab("picks")}
+      >
+        🧠 Picks
+      </button>
+      <button
+        className={activeTab === "scores" ? "active" : ""}
+        onClick={() => setActiveTab("scores")}
+      >
+        🏈 Scores
+      </button>
+    </div>
+  );
 
+  // ======================
+  // 📊 PICKS TAB
+  // ======================
+  const renderPicks = () => (
+    <>
       <div className="record">
         <p>
           🔥 Record: {record.wins}-{record.losses} ({record.winRate || 0}%)
         </p>
       </div>
 
-      {error && (
-        <p className="error">Could not connect to LockBox AI server.</p>
-      )}
-
+      {error && <p className="error">Could not connect to LockBox AI server.</p>}
       {loading && <p>Loading picks...</p>}
 
       {featured && !loading && (
@@ -110,6 +147,46 @@ function App() {
           </div>
         </>
       )}
+    </>
+  );
+
+  // ======================
+  // 🏈 SCORES TAB
+  // ======================
+  const renderScores = () => (
+    <div className="scores-section">
+      <h2>🏈 Live & Recent NFL Scores</h2>
+      {scores.length === 0 ? (
+        <p>No live or recent games available.</p>
+      ) : (
+        scores.map((g, i) => (
+          <div key={i} className="score-card">
+            <h3>
+              {g.away_team} @ {g.home_team}
+            </h3>
+            <p>
+              {g.scores?.length > 0
+                ? `${g.scores[0].name}: ${g.scores[0].score} | ${g.scores[1].name}: ${g.scores[1].score}`
+                : "No score data"}
+            </p>
+            <p className={g.completed ? "final" : "live"}>
+              {g.completed ? "✅ FINAL" : "⏱ LIVE"} |{" "}
+              {new Date(g.last_update).toLocaleTimeString()}
+            </p>
+          </div>
+        ))
+      )}
+    </div>
+  );
+
+  return (
+    <div className="App">
+      <div className="header">
+        <h1 className="logo">💎 LOCKBOX AI</h1>
+        <p className="subtitle">Win Smarter. Not Harder.</p>
+      </div>
+      {renderTabs()}
+      {activeTab === "picks" ? renderPicks() : renderScores()}
     </div>
   );
 }
