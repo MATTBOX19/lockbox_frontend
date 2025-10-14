@@ -1,8 +1,8 @@
 /* ====== GLOBAL STYLE ====== */
 body {
   font-family: "Poppins", sans-serif;
-  background: radial-gradient(circle at top, #000000, #101010 80%);
-  color: #e6f9f6;
+  background: radial-gradient(circle at top, #050505, #0e0e0e 80%);
+  color: #e8fdf9;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -18,16 +18,17 @@ body {
 }
 
 .logo {
-  font-size: 2.2em;
-  color: #00e6b0;
-  text-shadow: 0 0 8px #00e6b066;
+  font-size: 2.4em;
+  color: #00ffd5;
+  text-shadow: 0 0 10px #00ffd555, 0 0 20px #00ffd533;
+  letter-spacing: 1px;
 }
 
 .subtitle {
   font-weight: 400;
-  color: #aaa;
+  color: #ccc;
   margin-top: 6px;
-  font-size: 0.95em;
+  font-size: 1em;
 }
 
 /* ====== NAV / TABS ====== */
@@ -36,74 +37,116 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .tabs button {
   background: none;
-  color: #e6f9f6;
-  border: 1px solid #00e6b0;
+  color: #dffefb;
+  border: 1px solid #00ffd5;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.95em;
   letter-spacing: 0.5px;
 }
 
-.tabs button.active,
-.tabs button:hover {
-  background: #00e6b0;
+.tabs button.active {
+  background: linear-gradient(90deg, #00ffd5, #00ffa2);
   color: #000;
-  box-shadow: 0 0 8px #00e6b066;
+  font-weight: 600;
+  box-shadow: 0 0 10px #00ffd566;
 }
 
-/* ====== CARDS ====== */
+.tabs button:hover {
+  background: linear-gradient(90deg, #00ffa2, #00ffd5);
+  color: #000;
+}
+
+/* ====== SECTION HEADINGS ====== */
+h2 {
+  color: #00ffd5;
+  text-shadow: 0 0 8px #00ffd555;
+  font-size: 1.5em;
+  margin: 25px 0 10px;
+}
+
+.top3-section h2 {
+  color: #ffb347;
+  text-shadow: 0 0 8px #ffb34766, 0 0 14px #ff990066;
+}
+
+.weekly-section h2 {
+  color: #77ddff;
+  text-shadow: 0 0 8px #77ddff55;
+}
+
+/* ====== CARD STYLE ====== */
 .card {
-  background: #181818;
+  background: linear-gradient(145deg, #121212, #191919);
   margin: 15px auto;
   padding: 16px;
   width: 90%;
   max-width: 480px;
-  border-radius: 14px;
-  box-shadow: 0 0 12px #00e6b033;
-  transition: transform 0.2s ease;
+  border-radius: 16px;
+  box-shadow: 0 0 10px #00ffd533;
+  transition: all 0.25s ease;
+  text-align: left;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 15px #00e6b055;
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px #00ffd577, 0 0 25px #00ffa222;
 }
 
+/* ====== TEXT COLORS ====== */
 .card h3 {
-  color: #00e6b0;
-  margin-bottom: 10px;
+  color: #00ffd5;
+  margin-bottom: 8px;
+  font-size: 1.1em;
 }
 
 .card p {
-  margin: 6px 0;
+  margin: 4px 0;
   font-size: 0.95em;
   color: #c8f7f0;
 }
 
-/* ====== SECTIONS ====== */
-.picks-section h2,
-.scores-section h2 {
-  margin-top: 25px;
-  font-size: 1.4em;
-  color: #00e6b0;
-  text-shadow: 0 0 6px #00e6b066;
+/* ====== HIGHLIGHT SECTIONS ====== */
+.highlight {
+  background: linear-gradient(145deg, #141414, #1a1a1a);
+  border: 1px solid #ffb34766;
+  box-shadow: 0 0 12px #ffb34733;
 }
 
-.error {
-  color: #ff5c5c;
-  font-weight: bold;
-  margin-top: 10px;
+.highlight h3 {
+  color: #ffb347;
+  text-shadow: 0 0 8px #ffb34755;
 }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.highlight strong {
+  color: #00ffa2;
+}
+
+/* ====== CONFIDENCE COLORS ====== */
+strong {
+  font-weight: 600;
+}
+
+p strong:nth-child(1) {
+  color: #00ffd5;
+}
+
+p strong:nth-child(2) {
+  color: #ff66b3;
+}
+
+/* ====== SECTION SUBTEXT ====== */
+.section-sub {
+  color: #aaaaaa;
+  font-size: 0.9em;
+  margin-bottom: 10px;
 }
 
 /* ====== MOBILE ====== */
