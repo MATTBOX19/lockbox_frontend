@@ -1,73 +1,33 @@
-body {
-  background-color: #0b0b0b;
-  color: #e0f7f4;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  color: #00ffc6;
-  margin-top: 20px;
-}
-
-.subtext {
-  color: #aaa;
-  margin-top: -10px;
-  margin-bottom: 20px;
-  font-size: 0.9em;
-}
-
-button {
-  margin: 5px;
-  background: none;
-  color: #fff;
-  border: 1px solid #00ffc6;
-  padding: 10px 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button.active,
-button:hover {
-  background: #00ffc6;
-  color: #000;
-}
-
-.card {
-  background: #141414;
+.top-plays {
+  background: #111;
   border-radius: 14px;
-  margin: 15px auto;
-  padding: 18px;
+  padding: 20px;
+  margin: 25px auto;
   width: 85%;
-  max-width: 520px;
-  box-shadow: 0 0 15px #00ffc633;
-}
-
-.glow {
+  max-width: 600px;
   box-shadow: 0 0 20px #00ffc620;
 }
 
-.edge {
+.top-plays h2 {
   color: #00ffc6;
-  font-weight: 600;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.lines p {
-  margin: 4px 0;
+.top-card {
+  background: #1b1b1b;
+  border: 1px solid #00ffc620;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 12px;
+  color: #e0f7f4;
+}
+
+.top-card h3 {
+  color: #00ffc6;
+  margin: 5px 0;
+}
+
+.top-card p {
+  font-size: 0.95em;
   color: #ccc;
-}
-
-.book,
-.time {
-  color: #888;
-  font-size: 0.9em;
-}
-
-.error {
-  color: #ff4444;
-  font-weight: bold;
 }

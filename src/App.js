@@ -5,6 +5,7 @@ function App() {
   const [activeTab, setActiveTab] = useState("picks");
   const [picks, setPicks] = useState([]);
   const [scores, setScores] = useState([]);
+  const [topPlays, setTopPlays] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -20,7 +21,19 @@ function App() {
       const res = await fetch(`${API_BASE}/api/picks`);
       if (!res.ok) throw new Error("Failed to fetch AI data");
       const data = await res.json();
-      setPicks(data.picks || []);
+      const allPicks = data.picks || [];
+      setPicks(allPicks);
+
+      // 🧠 Extract Top 3 recommended plays overall
+      const allRecommended = allPicks
+        .map((g) => ({
+          matchup: g.matchup,
+          ...g.recommendedPlay,
+        }))
+        .sort((a, b) => b.confidence - a.confidence)
+        .slice(0, 3);
+
+      setTopPlays(allRecommended);
     } catch (err) {
       console.error("❌ LockBox AI fetch error:", err.message);
       setError(true);
@@ -68,17 +81,41 @@ function App() {
   );
 
   // ======================
+  // 🧠 TOP 3 SUMMARY
+  // ======================
+  const renderTopPlays = () => (
+    <div className="top-plays">
+      <h2>💎 Top 3 AI Plays of the Week</h2>
+      {topPlays.length === 0 ? (
+        <p>No AI plays available yet.</p>
+      ) : (
+        topPlays.map((p, i) => (
+          <div key={i} className="top-card">
+            <h3>#{i + 1} – {p.matchup}</h3>
+            <p>
+              <strong>{p.type.toUpperCase()}</strong> — {p.pick}{" "}
+              {p.line ? `(${p.line})` : ""} — {p.confidence}% Confidence
+            </p>
+          </div>
+        ))
+      )}
+    </div>
+  );
+
+  // ======================
   // 📊 AI ANALYSIS TAB
   // ======================
   const renderPicks = () => (
     <div className="ai-analysis">
       <h2>💎 LockBox AI Weekly Model</h2>
-      <p className="subtext">AI-powered confidence edges & recommended plays</p>
+      <p className="subtext">AI-powered confidence edges & recommendations</p>
 
       {error && <p className="error">Could not connect to backend.</p>}
       {loading && <p>Loading AI analysis...</p>}
 
       {!loading && picks.length === 0 && <p>No upcoming games available.</p>}
+
+      {!loading && topPlays.length > 0 && renderTopPlays()}
 
       {picks.map((p, i) => (
         <div key={i} className="card glow">
