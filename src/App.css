@@ -1,6 +1,6 @@
 body {
-  background: radial-gradient(circle at top, #0a0018, #150033 70%);
-  color: #fff;
+  background-color: #0b0b0b;
+  color: #e0f7f4;
   font-family: "Poppins", sans-serif;
   text-align: center;
   margin: 0;
@@ -8,158 +8,66 @@ body {
 }
 
 h1 {
-  color: #00e6b0;
+  color: #00ffc6;
   margin-top: 20px;
-  font-size: 2em;
 }
 
-p {
-  color: #bbb;
-  font-weight: 400;
-}
-
-.card {
-  position: relative;
-  background: #1b0033;
-  margin: 20px auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 16px;
-  box-shadow: 0 0 15px #6c00ff55;
-  text-align: left;
-  overflow: hidden;
-}
-
-.section {
-  margin-top: 15px;
-}
-
-.barContainer {
-  background: #222;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 24px;
-  margin: 8px 0;
-}
-
-.bar {
-  height: 100%;
-  font-weight: bold;
-  text-align: center;
-  line-height: 24px;
-  color: #000;
-}
-
-.edge {
+.subtext {
+  color: #aaa;
+  margin-top: -10px;
+  margin-bottom: 20px;
   font-size: 0.9em;
-  color: #00e6b0;
 }
 
-.analyze-btn {
-  background: #6c00ff;
+button {
+  margin: 5px;
+  background: none;
   color: #fff;
-  border: none;
+  border: 1px solid #00ffc6;
   padding: 10px 20px;
   border-radius: 12px;
   cursor: pointer;
-  font-weight: bold;
-  margin-top: 12px;
   transition: 0.3s;
 }
 
-.analyze-btn:hover {
-  background: #00e6b0;
+button.active,
+button:hover {
+  background: #00ffc6;
   color: #000;
+}
+
+.card {
+  background: #141414;
+  border-radius: 14px;
+  margin: 15px auto;
+  padding: 18px;
+  width: 85%;
+  max-width: 520px;
+  box-shadow: 0 0 15px #00ffc633;
+}
+
+.glow {
+  box-shadow: 0 0 20px #00ffc620;
+}
+
+.edge {
+  color: #00ffc6;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.lines p {
+  margin: 4px 0;
+  color: #ccc;
+}
+
+.book,
+.time {
+  color: #888;
+  font-size: 0.9em;
 }
 
 .error {
-  color: red;
+  color: #ff4444;
   font-weight: bold;
-}
-
-/* ===== MODAL ===== */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: #1b0033;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px #6c00ffaa;
-  max-width: 420px;
-  width: 85%;
-  color: #fff;
-  text-align: center;
-  animation: fadeIn 0.3s ease;
-}
-
-.modal-content h2 {
-  color: #00e6b0;
-}
-
-.note {
-  color: #bbb;
-  font-size: 0.9em;
-  margin-top: 10px;
-  line-height: 1.4em;
-}
-
-.close-btn {
-  background: #00e6b0;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-weight: bold;
-  margin-top: 15px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.close-btn:hover {
-  background: #6c00ff;
-  color: #fff;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== ADVANTAGE BADGE ===== */
-.advantage-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #00e6b0;
-  color: #000;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-size: 0.9em;
-  font-weight: bold;
-  box-shadow: 0 0 10px #0005;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.advantage-badge:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #00e6b0;
 }
