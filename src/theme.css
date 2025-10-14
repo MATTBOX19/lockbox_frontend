@@ -1,165 +1,89 @@
 body {
   font-family: "Poppins", sans-serif;
-  background: radial-gradient(circle at top, #000, #111 70%);
-  color: white;
+  background: radial-gradient(circle at top, #0a0a0a, #111 75%);
+  color: #eaeaea;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.header {
-  padding: 25px;
+/* Header */
+h1 {
+  color: #00ffc6;
+  font-size: 2.4em;
+  margin-top: 30px;
+  letter-spacing: 1px;
 }
 
-.logo {
-  font-size: 2.5em;
-  color: #00e6b0;
-}
-
-.subtitle {
-  font-weight: 400;
-  color: #aaa;
-  margin-bottom: 8px;
+p {
+  color: #ccc;
 }
 
 .record {
-  color: #0ff;
+  color: #00ffc6;
   font-weight: bold;
+  margin-top: 10px;
 }
 
-.nav {
-  margin-top: 20px;
+/* Tabs */
+.tabs {
+  margin-top: 15px;
 }
 
 button {
   margin: 5px;
   background: none;
-  color: #fff;
-  border: 1px solid #00e6b0;
-  padding: 10px 20px;
-  border-radius: 12px;
+  color: #eaeaea;
+  border: 1px solid #00ffc6;
+  padding: 10px 22px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+
+button.active,
+button:hover {
+  background: #00ffc6;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Cards */
+.lock-card,
+.pick-card,
+.score-card {
+  background: #1b1b1b;
+  margin: 18px auto;
+  padding: 18px;
+  width: 80%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00ffc620;
   transition: 0.3s;
 }
 
-button.active, button:hover {
-  background: #00e6b0;
-  color: #000;
-}
-
-.card {
-  background: #1a1a1a;
-  margin: 20px auto;
-  padding: 20px;
-  width: 80%;
-  border-radius: 16px;
-  box-shadow: 0 0 15px #00e6b033;
-}
-
-.glow {
-  box-shadow: 0 0 20px #00e6b033;
-}
-
-.barContainer {
-  background: #222;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 24px;
-  margin: 10px 0;
-}
-
-.bar {
-  height: 100%;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-  line-height: 24px;
-}
-
-.edge {
-  color: #0ff;
-  font-weight: bold;
-}
-
-.modelTag {
-  color: #ffcc00;
-  font-weight: bold;
-  margin-top: 8px;
-}
-/* ============================= */
-/* 🔹 TAB NAVIGATION */
-/* ============================= */
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 25px 0;
-}
-
-.tabs button {
-  background: none;
-  color: #fff;
-  border: 1px solid #00e6b0;
-  padding: 12px 25px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1em;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px #00e6b033;
-}
-
-.tabs button.active {
-  background: #00e6b0;
-  color: #000;
-  box-shadow: 0 0 20px #00e6b0aa;
-}
-
-.tabs button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px #00e6b077;
-}
-
-/* ============================= */
-/* 🔹 SCORE CARD STYLING */
-/* ============================= */
-.scores-section {
-  margin-top: 20px;
-}
-
-.score-card {
-  background: #1a1a1a;
-  margin: 15px auto;
-  padding: 20px;
-  width: 85%;
-  border-radius: 14px;
-  box-shadow: 0 0 15px #00e6b033;
-  transition: 0.3s ease;
-}
-
+.lock-card:hover,
+.pick-card:hover,
 .score-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 25px #00e6b077;
+  box-shadow: 0 0 20px #00ffc640;
 }
 
-.score-card h3 {
-  color: #00e6b0;
-  font-weight: 600;
-  margin-bottom: 8px;
+/* Section headers */
+h2 {
+  color: #00ffc6;
+  margin-top: 30px;
 }
 
+h3 {
+  color: #fff;
+}
+
+/* Score display */
 .score-card p {
-  color: #ddd;
-  margin: 4px 0;
+  color: #bbb;
 }
 
-.score-card .live {
-  color: #0ff;
-  font-weight: bold;
+.error {
+  color: #ff5555;
 }
-
-.score-card .final {
-  color: #ffcc00;
-  font-weight: bold;
-}
-
