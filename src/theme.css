@@ -20,7 +20,7 @@ p {
 }
 
 .record {
-  color: #00ffc6;
+  color: #ffae00;
   font-weight: bold;
   margin-top: 10px;
 }
@@ -49,41 +49,86 @@ button:hover {
   font-weight: 600;
 }
 
-/* Cards */
-.lock-card,
-.pick-card,
-.score-card {
-  background: #1b1b1b;
-  margin: 18px auto;
-  padding: 18px;
-  width: 80%;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #00ffc620;
-  transition: 0.3s;
-}
-
-.lock-card:hover,
-.pick-card:hover,
-.score-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px #00ffc640;
-}
-
 /* Section headers */
 h2 {
   color: #00ffc6;
   margin-top: 30px;
 }
 
-h3 {
-  color: #fff;
+/* LockBox Picks colors */
+.lock-card {
+  background: #1a1a1a;
+  margin: 18px auto;
+  padding: 18px;
+  width: 80%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00ffc640;
+  transition: 0.3s;
 }
 
-/* Score display */
+.lock-card:nth-child(1) h3 {
+  color: #ffd700; /* Gold for Moneyline */
+}
+.lock-card:nth-child(2) h3 {
+  color: #9b59b6; /* Purple for Spread */
+}
+.lock-card:nth-child(3) h3 {
+  color: #ff4d4d; /* Red for Prop */
+}
+
+/* All Picks section */
+.all-picks h2 {
+  color: #00ffc6;
+}
+
+.pick-card {
+  background: #181818;
+  margin: 16px auto;
+  padding: 16px;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffc620;
+  transition: 0.3s;
+}
+
+.pick-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px #00ffc640;
+}
+
+.pick-card strong {
+  color: #00ffc6;
+}
+
+/* Scores tab colors */
+.scores-section h2 {
+  color: #00bfff;
+}
+
+.score-card {
+  background: #181818;
+  margin: 16px auto;
+  padding: 16px;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00bfff30;
+  transition: 0.3s;
+}
+
+.score-card h3 {
+  color: #00bfff;
+}
+
 .score-card p {
-  color: #bbb;
+  color: #ddd;
 }
 
+.score-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px #00bfff60;
+}
+
+/* Error */
 .error {
   color: #ff5555;
 }
