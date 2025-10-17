@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
   const API_BASE =
     process.env.REACT_APP_API_BASE_URL ||
-    "https://lockbox-backend-qkx9.onrender.com";
+    "https://lockbox-backend-vcai.onrender.com";
 
   // ===== Fetch Picks =====
   const fetchPicks = async (sport) => {
@@ -30,7 +30,7 @@ function App() {
       setTop3(sorted.slice(0, 3));
       setPicks(all);
     } catch (err) {
-      console.error("❌ fetchPicks error:", err.message);
+      console.error("âŒ fetchPicks error:", err.message);
       setError(true);
     } finally {
       setLoading(false);
@@ -44,7 +44,7 @@ function App() {
       const data = await res.json();
       setScores(data.games || []);
     } catch (err) {
-      console.error("❌ fetchScores error:", err.message);
+      console.error("âŒ fetchScores error:", err.message);
       setScores([]);
     }
   };
@@ -64,7 +64,7 @@ function App() {
           className={activeTab === tab ? "active" : ""}
           onClick={() => setActiveTab(tab)}
         >
-          {tab === "scores" ? "📊 Scores" : tab.toUpperCase()}
+          {tab === "scores" ? "ðŸ“Š Scores" : tab.toUpperCase()}
         </button>
       ))}
     </div>
@@ -73,7 +73,7 @@ function App() {
   // ===== Top 3 Picks =====
   const renderTop3 = () => (
     <div className="top3-section">
-      <h2>🔥 Top 3 AI Picks</h2>
+      <h2>ðŸ”¥ Top 3 AI Picks</h2>
       {top3.map((p, i) => (
         <div key={i} className="card highlight">
           <h3>{p.matchup}</h3>
@@ -96,7 +96,7 @@ function App() {
   // ===== Weekly Model =====
   const renderWeeklyModel = () => (
     <div className="weekly-section">
-      <h2>💎 LockBox AI Weekly Model</h2>
+      <h2>ðŸ’Ž LockBox AI Weekly Model</h2>
       <p className="section-sub">
         AI-powered confidence edges & recommendations
       </p>
@@ -122,7 +122,7 @@ function App() {
   // ===== Scores =====
   const renderScores = () => (
     <div className="scores-section">
-      <h2>🏈 Live & Recent Scores</h2>
+      <h2>ðŸˆ Live & Recent Scores</h2>
       {scores.length === 0 ? (
         <p>No live or recent games.</p>
       ) : (
@@ -136,7 +136,7 @@ function App() {
                 ? `${g.scores[0].name}: ${g.scores[0].score} | ${g.scores[1].name}: ${g.scores[1].score}`
                 : "No score data"}
             </p>
-            <p>{g.completed ? "✅ FINAL" : "⏱ LIVE"}</p>
+            <p>{g.completed ? "âœ… FINAL" : "â± LIVE"}</p>
           </div>
         ))
       )}
@@ -146,7 +146,7 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <h1 className="logo">💎 LOCKBOX AI</h1>
+        <h1 className="logo">ðŸ’Ž LOCKBOX AI</h1>
         <p className="subtitle">Smart AI Sports Analysis</p>
       </header>
 
@@ -167,3 +167,4 @@ function App() {
 }
 
 export default App;
+
